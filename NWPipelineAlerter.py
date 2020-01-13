@@ -6,16 +6,11 @@ import pymysql.cursors
 
 
 #=====================================================================================
-#SUMMARY
-#=====================================================================================
 # Currently the script starts with opening a json file then in the myMain function it goes through a conditional trying to catch the alert by detail(alert name).
 # If its caught myMain will take the FI number, and send it to the proper type of report to be parsed (only 4 right now). Once it arrives there the data is molded into objects
 # and feeds the FI number,alertType, and data that needs to be parsed to dbPull. dbPull will keep that information but add the FIs listed email address and then pass that along to the mailer.
 # the mailing function (when not hardcoded) will make the sender the corresponding email address and choose what template based on the alerttype its fed, then it pushes the email.
 #=====================================================================================
-
-
-
 
 #=====================================================================================
 #MAIL FUNCTION
@@ -430,7 +425,9 @@ def mailSender(emailaddr,alertType,data):
 
 #This function takes in the FI number, type of alert, and data that needs to be pulled
 # It will connect to the DB and search the DB for the first email address listed for that FI.
-# It then grabs and stores the address and sends the address, alerttype and data to the mailer to be parsed and sent
+# It then grabs and stores the address and sends the address, alerttype and 
+
+to the mailer to be parsed and sent
 
 def dbPull(fiNumber, alertType, data):
     email = []
